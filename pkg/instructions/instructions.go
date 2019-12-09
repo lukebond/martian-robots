@@ -96,9 +96,11 @@ func ProcessSequence(r *robot.Robot, seq string, g *grid.Grid) string {
     case 'F':
       lastX := r.X
       lastY := r.Y
-      r.Forward()
+      if !g.CheckScent(r.X, r.Y) || !MoveWouldLoseRobot(r, g) {
+        // no scent on current space, or there is but the move is safe
+        r.Forward()
+      }
       if r.X < 0 || r.X >= g.Width || r.Y < 0 || r.Y >= g.Height {
-        fmt.Printf("Robot lost at %d,%d. Last position: %d,%d\n", r.X, r.Y, lastX, lastY)
         g.SetScent(lastX, lastY)
         r.X = lastX
         r.Y = lastY
@@ -113,4 +115,11 @@ func ProcessSequence(r *robot.Robot, seq string, g *grid.Grid) string {
     output = output + " LOST"
   }
   return output
+}
+
+func MoveWouldLoseRobot(r *robot.Robot, g *grid.Grid) bool {
+  return (r.Orientation == "N" && r.Y == g.Height - 1) ||
+    (r.Orientation == "S" && r.Y == 0) ||
+    (r.Orientation == "E" && r.X == g.Width - 1) ||
+    (r.Orientation == "W" && r.X == 0)
 }

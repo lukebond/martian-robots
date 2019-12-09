@@ -47,6 +47,7 @@ func TestProcessSequence2(t *testing.T) {
 
 func TestProcessSequence3(t *testing.T) {
   g := grid.NewGrid(6, 4)
+  g.SetScent(3, 3)
   r := robot.Robot{X: 0, Y: 3, Orientation: "W"}
   output := instructions.ProcessSequence(&r, "LLFFFLFLFL", g)
   if output != "2 3 S" {
