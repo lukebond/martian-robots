@@ -11,3 +11,8 @@ build:
 .PHONY: test
 test:
 	go test github.com/lukebond/martian-robots/pkg/{grid,instructions,robot}
+
+.PHONY: gofmt
+gofmt:
+	go fmt cmd/main.go
+	go fmt github.com/lukebond/martian-robots/pkg/{grid,instructions,robot}

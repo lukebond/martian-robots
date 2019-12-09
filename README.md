@@ -21,3 +21,9 @@ directory.
 ```bash
 $ make test
 ```
+
+## Run `go fmt`
+
+```bash
+$ make gofmt
+```
