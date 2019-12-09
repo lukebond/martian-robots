@@ -15,9 +15,9 @@ func NewGrid(width int, height int) *Grid {
 }
 
 func (g *Grid) CheckScent(x int, y int) bool {
-  return g.scents[x][y]
+  return g.scents[y][x]
 }
 
 func (g *Grid) SetScent(x int, y int) {
-  g.scents[x][y] = true
+  g.scents[y][x] = true
 }
