@@ -74,11 +74,13 @@ func LoadInstructionsFromFile(filename string) (*Instructions, error) {
   return &i, nil
 }
 
-func (i *Instructions) ProcessInstructions() {
+func (i *Instructions) ProcessInstructions() string {
+  var output string
   g := grid.NewGrid(i.MaxX + 1, i.MaxY + 1)
   for r := 0; r < len(i.Robots); r++ {
-    ProcessSequence(&i.Robots[r], i.Sequences[r], g)
+    output = output + ProcessSequence(&i.Robots[r], i.Sequences[r], g) + "\n"
   }
+  return output
 }
 
 func ProcessSequence(r *robot.Robot, seq string, g *grid.Grid) string {
