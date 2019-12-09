@@ -1,7 +1,7 @@
 package robot
 
 import (
-  "errors"
+	"errors"
 )
 
 type Robot struct {
@@ -13,47 +13,47 @@ type Robot struct {
 func (r *Robot) RotateLeft() error {
 	switch r.Orientation {
 	case "N":
-    r.Orientation = "W"
+		r.Orientation = "W"
 	case "S":
-    r.Orientation = "E"
+		r.Orientation = "E"
 	case "E":
-    r.Orientation = "N"
+		r.Orientation = "N"
 	case "W":
-    r.Orientation = "S"
+		r.Orientation = "S"
 	default:
-    return errors.New("Invalid orientation: " + r.Orientation)
+		return errors.New("Invalid orientation: " + r.Orientation)
 	}
-  return nil
+	return nil
 }
 
 func (r *Robot) RotateRight() error {
 	switch r.Orientation {
 	case "N":
-    r.Orientation = "E"
+		r.Orientation = "E"
 	case "S":
-    r.Orientation = "W"
+		r.Orientation = "W"
 	case "E":
-    r.Orientation = "S"
+		r.Orientation = "S"
 	case "W":
-    r.Orientation = "N"
+		r.Orientation = "N"
 	default:
-    return errors.New("Invalid orientation: " + r.Orientation)
-  }
-  return nil
+		return errors.New("Invalid orientation: " + r.Orientation)
+	}
+	return nil
 }
 
 func (r *Robot) Forward() error {
 	switch r.Orientation {
 	case "N":
-    r.Y++
+		r.Y++
 	case "S":
-    r.Y--
+		r.Y--
 	case "E":
-    r.X++
+		r.X++
 	case "W":
-    r.X--
+		r.X--
 	default:
-    return errors.New("Invalid orientation: " + r.Orientation)
-  }
-  return nil
+		return errors.New("Invalid orientation: " + r.Orientation)
+	}
+	return nil
 }
