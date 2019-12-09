@@ -57,6 +57,5 @@ func (r *Robot) Forward(g *grid.Grid) error {
 	default:
     return errors.New("Invalid orientation: " + r.Orientation)
   }
-  g.SetScent(r.X, r.Y)
   return nil
 }
