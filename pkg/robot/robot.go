@@ -2,8 +2,6 @@ package robot
 
 import (
   "errors"
-
-  "github.com/lukebond/martian-robots/pkg/grid"
 )
 
 type Robot struct {
@@ -44,7 +42,7 @@ func (r *Robot) RotateRight() error {
   return nil
 }
 
-func (r *Robot) Forward(g *grid.Grid) error {
+func (r *Robot) Forward() error {
 	switch r.Orientation {
 	case "N":
     r.Y++
