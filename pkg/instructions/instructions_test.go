@@ -54,3 +54,13 @@ func TestProcessSequence3(t *testing.T) {
     t.Errorf("Test sequence output '%v' didn't match sample data", output)
   }
 }
+
+func TestUnknownInstruction(t *testing.T) {
+  g := grid.NewGrid(6, 4)
+  g.SetScent(3, 3)
+  r := robot.Robot{X: 0, Y: 3, Orientation: "W"}
+  output := instructions.ProcessSequence(&r, "LXLFFFLFLFL", g)
+  if output != "2 3 S" {
+    t.Errorf("Test sequence output '%v' didn't match sample data", output)
+  }
+}
