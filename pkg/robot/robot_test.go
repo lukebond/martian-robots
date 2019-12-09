@@ -3,6 +3,7 @@ package robot_test
 import (
   "testing"
 
+  "github.com/lukebond/martian-robots/pkg/grid"
   "github.com/lukebond/martian-robots/pkg/robot"
 )
 
@@ -72,7 +73,8 @@ func TestRotateRightS(t *testing.T) {
 
 func TestForwardE(t *testing.T) {
   r := robot.Robot{X: 1, Y: 1, Orientation: "E"}
-  r.Forward()
+  g := grid.NewGrid(5, 5)
+  r.Forward(g)
   if r.X != 2 {
     t.Errorf("On move forward from orientation East, X should increment by 1")
   }
@@ -80,7 +82,8 @@ func TestForwardE(t *testing.T) {
 
 func TestForwardN(t *testing.T) {
   r := robot.Robot{X: 1, Y: 1, Orientation: "N"}
-  r.Forward()
+  g := grid.NewGrid(5, 5)
+  r.Forward(g)
   if r.Y != 2 {
     t.Errorf("On move forward from orientation North, Y should increment by 1")
   }
@@ -88,7 +91,8 @@ func TestForwardN(t *testing.T) {
 
 func TestForwardW(t *testing.T) {
   r := robot.Robot{X: 1, Y: 1, Orientation: "W"}
-  r.Forward()
+  g := grid.NewGrid(5, 5)
+  r.Forward(g)
   if r.X != 0 {
     t.Errorf("On move forward from orientation West, X should decrement by 1")
   }
@@ -96,8 +100,18 @@ func TestForwardW(t *testing.T) {
 
 func TestForwardS(t *testing.T) {
   r := robot.Robot{X: 1, Y: 1, Orientation: "S"}
-  r.Forward()
+  g := grid.NewGrid(5, 5)
+  r.Forward(g)
   if r.Y != 0 {
     t.Errorf("On move forward from orientation South, Y should decrement by 1")
+  }
+}
+
+func TestForwardScent(t *testing.T) {
+  r := robot.Robot{X: 0, Y: 0, Orientation: "N"}
+  g := grid.NewGrid(5, 5)
+  r.Forward(g)
+  if !g.CheckScent(0, 1) {
+    t.Errorf("No scent left on robot move")
   }
 }

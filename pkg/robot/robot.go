@@ -2,6 +2,8 @@ package robot
 
 import (
   "errors"
+
+  "github.com/lukebond/martian-robots/pkg/grid"
 )
 
 type Robot struct {
@@ -42,7 +44,7 @@ func (r *Robot) RotateRight() error {
   return nil
 }
 
-func (r *Robot) Forward() error {
+func (r *Robot) Forward(g *grid.Grid) error {
 	switch r.Orientation {
 	case "N":
     r.Y++
@@ -55,5 +57,6 @@ func (r *Robot) Forward() error {
 	default:
     return errors.New("Invalid orientation: " + r.Orientation)
   }
+  g.SetScent(r.X, r.Y)
   return nil
 }
