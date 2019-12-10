@@ -11,8 +11,6 @@ import (
 
 func TestLoadInstructions(t *testing.T) {
 	i, err := instructions.LoadInstructionsFromFile("sample-input.txt")
-	fmt.Printf("%v\n", i)
-	fmt.Printf("%v\n", err)
 	if err != nil {
 		t.Errorf("Error while loading instructions")
 	}
