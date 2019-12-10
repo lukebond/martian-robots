@@ -1,7 +1,6 @@
 package instructions_test
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/lukebond/martian-robots/pkg/grid"
